@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: flask-enterprise-app
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    autoDeploy: true
+
+    envVars:
+      - key: FLASK_ENV
+        value: development
+      - key: DATABASE_URL
+        value: sqlite:///customers.db

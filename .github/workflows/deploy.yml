@@ -39,5 +39,5 @@ jobs:
             echo "Render Deploy Hook URL no está configurado. Aborting deployment."
             exit 1
           else
-            curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+            curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
           fi

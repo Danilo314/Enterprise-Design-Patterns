@@ -35,4 +35,9 @@ jobs:
 
       - name: Deploy to Render (via API or webhook)
         run: |
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" ]; then
+            echo "Render Deploy Hook URL no está configurado. Aborting deployment."
+            exit 1
+          else
+            curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+          fi
